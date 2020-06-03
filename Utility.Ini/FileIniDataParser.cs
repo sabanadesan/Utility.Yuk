@@ -21,14 +21,19 @@ namespace Utility.Ini
 
         public void WriteFile(string fileName, string path, IniData data)
         {
-            SectionCollection sections = data.Sections;
-            foreach (Section section in sections)
-            {
-                System.Console.WriteLine("[{0}]", section.Name);
+            var filePath = Path.Combine(path, fileName);
 
-                foreach (Property property in section.Properties)
+            using (StreamWriter outputFile = new StreamWriter(filePath))
+            {
+                SectionCollection sections = data.Sections;
+                foreach (Section section in sections)
                 {
-                    System.Console.WriteLine("{0}={1}", property.Key, property.Value);
+                    outputFile.WriteLine("[{0}]", section.Name);
+
+                    foreach (Property property in section.Properties)
+                    {
+                        outputFile.WriteLine("{0}={1}", property.Key, property.Value);
+                    }
                 }
             }
         }
