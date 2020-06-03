@@ -1,7 +1,9 @@
 ﻿using System;
-using UtilityPlus;
 
-namespace Utility.Yuk
+using UtilityPlus;
+using Utility.Yuk;
+
+namespace Utility.Console
 {
     class Program
     {
@@ -9,7 +11,7 @@ namespace Utility.Yuk
         {
             UtilityPlus.Class1.msg();
 
-            Console.WriteLine("Hello World!");
+            System.Console.WriteLine("Hello World!");
             SomeAction("yes");
 
             string param1 = "test";
@@ -20,7 +22,7 @@ namespace Utility.Yuk
         [Stopwatcher]
         static bool SomeAction(string param1)
         {
-            Console.WriteLine("1");
+            System.Console.WriteLine("1");
             for (int i = 0; i < 1000000000; i++)
             {
                 int a = 1 + 5;
