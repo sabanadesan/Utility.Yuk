@@ -4,7 +4,17 @@ using System.Text;
 
 namespace Utility.Yuk
 {
-    class CPU
+    public class CPU
     {
+        public CPU()
+        {
+
+        }
+
+        public static void PrintRuntimeEvents(int proccessId)
+        {
+           
+        }
+
     }
 }
