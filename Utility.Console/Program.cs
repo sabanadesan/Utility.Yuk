@@ -1,5 +1,7 @@
 ﻿using System;
 
+using System.Threading.Tasks;
+
 using UtilityPlus;
 using Utility.Yuk;
 
@@ -7,7 +9,21 @@ namespace Utility.Console
 {
     class Program
     {
-        static void Main(string[] args)
+        public static async Task Main(string[] args)
+        {
+
+            var task = Task.Run(() => CPU.ConsumeCPU(50));
+
+            while (true)
+            {
+                await Task.Delay(2000);
+                var cpuUsage = await CPU.GetCpuUsageForProcess();
+
+                System.Console.WriteLine(cpuUsage);
+            }
+        }
+
+        static void Main2(string[] args)
         {
             UtilityPlus.Class1.msg();
 
