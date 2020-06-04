@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Utility.Cmd\Utility.Cmd.csproj" />
     <ProjectReference Include="..\Utility.Yuk\Utility.Yuk.csproj" />
     <ProjectReference Include="..\UtilityPlus\UtilityPlus.csproj" />
   </ItemGroup>

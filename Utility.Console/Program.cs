@@ -4,12 +4,48 @@ using System.Threading.Tasks;
 
 using UtilityPlus;
 using Utility.Yuk;
+using Utility.Cmd;
 
 namespace Utility.Console
 {
     class Program
     {
-        public static async Task Main(string[] args)
+        public class ApplicationArguments
+        {
+            public int RecordId { get; set; }
+            public bool Silent { get; set; }
+            public string NewValue { get; set; }
+        }
+
+        static void Main(string[] args)
+        {
+            // create a generic parser for the ApplicationArguments type
+            var p = new FluentCommandLineParser<ApplicationArguments>();
+
+            // specify which property the value will be assigned too.
+            p.Setup(arg => arg.RecordId)
+             .As('r', "record") // define the short and long option name
+             .Required(); // using the standard fluent Api to declare this Option as required.
+
+            p.Setup(arg => arg.NewValue)
+             .As('v', "value")
+             .Required();
+
+            p.Setup(arg => arg.Silent)
+             .As('s', "silent")
+             .SetDefault(false); // use the standard fluent Api to define a default value if non is specified in the arguments
+
+            var result = p.Parse(args);
+
+            if (result.HasErrors == false)
+            {
+                // use the instantiated ApplicationArguments object from the Object property on the parser.
+                
+                //application.Run(p.Object);
+            }
+        }
+
+        public static async Task Main3(string[] args)
         {
 
             var task = Task.Run(() => CPU.ConsumeCPU(50));
