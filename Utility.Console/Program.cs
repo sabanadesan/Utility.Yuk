@@ -17,7 +17,7 @@ namespace Utility.Console
             public string NewValue { get; set; }
         }
 
-        static void Main(string[] args)
+        static void Main0(string[] args)
         {
             // create a generic parser for the ApplicationArguments type
             var p = new FluentCommandLineParser<ApplicationArguments>();

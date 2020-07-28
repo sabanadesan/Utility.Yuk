@@ -19,7 +19,19 @@ namespace Utility.Ini
             _parser.Scheme.CommentString = "#";
         }
 
-        public void WriteFile(string fileName, string path, IniData data)
+        public Boolean IsFileExists(string fileName, string path)
+        {
+            var filePath = Path.Combine(path, fileName);
+
+            if (!File.Exists(filePath))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void WriteIniFile(string fileName, string path, IniData data)
         {
             var filePath = Path.Combine(path, fileName);
 
@@ -38,7 +50,7 @@ namespace Utility.Ini
             }
         }
 
-        public IniData ReadAndParseIniFile(string fileName, string path, Encoding fileEncoding)
+        public IniData ReadIniFile(string fileName, string path, Encoding fileEncoding)
         {
             var filePath = Path.Combine(path, fileName);
 
